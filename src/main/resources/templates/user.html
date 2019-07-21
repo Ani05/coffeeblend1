@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login V18</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/user/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/vendor/bootstrap/css/bootstrap.min.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/vendor/animate/animate.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/vendor/css-hamburgers/hamburgers.min.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/vendor/animsition/css/animsition.min.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/vendor/select2/select2.min.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/vendor/daterangepicker/daterangepicker.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/user/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body style="background-color: #666666;">
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-form validate-form">
+                <div class="author d-flex mt-4" th:each="user:${users}" >
+                    <div class="image mr-3 align-self-center" >
+                        <a href="/"><img class="elementImg" th:src="@{/getImage(picUrl=${user.picUrl})}"  alt=""></a>
+
+                    </div>
+                    <div class="name align-self-center"  >
+                        <span  class="position" th:text="${user.name}"></span>
+                        <span  class="position" th:text="${user.surname}"></span>
+                        <span class="position" th:text="${user.position}"></span>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="login100-more" style="background-image: url('/user/images/bg_4.jpg');">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--===============================================================================================-->
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/daterangepicker/moment.min.js"></script>
+<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="js/main.js"></script>
+
+</body>
+</html>

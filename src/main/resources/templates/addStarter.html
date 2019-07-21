@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login V18</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/user/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/vendor/bootstrap/css/bootstrap.min.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/vendor/animate/animate.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/vendor/css-hamburgers/hamburgers.min.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/vendor/animsition/css/animsition.min.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/vendor/select2/select2.min.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/vendor/daterangepicker/daterangepicker.css">
+    <!--=========================================/user/======================================================-->
+    <link rel="stylesheet" type="text/css" href="/user/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/user/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body style="background-color: #666666;">
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-form validate-form">
+                <div class="author d-flex mt-4">
+                    <div class="image mr-3 align-self-center">
+                        <img class="elementImg" src="images/person_4.jpg" alt="">
+                    </div>
+                    <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span>
+                    </div>
+                </div>
+
+                <a href="/addCategory" class="nav-link">Add Category</a>
+                <a href="/addDessert" class="nav-link">Add Dessert</a>
+                <a href="/addDrink" class="nav-link">Add Drink</a>
+                <a href="/addMainDish" class="nav-link">Add Main Dish</a>
+                <a href="/addStarter" class="nav-link">Add Starter</a>
+                <a href="/addCoffeeCappuccino" class="nav-link">Add Cappuccino/Coffee</a>
+                <a href="/addTodayMenu" class="nav-link">Add Today Menu</a>
+                <a href="/logout" class="nav-link">LogOut</a>
+            </div>
+
+            <div class="login100-more" style="background-image: url('images/bg_4.jpg');">
+                <div class="h55">
+                    <h1>Add Starter</h1>
+                </div>
+                <form class="add100 " action="/addStarter" method="post" enctype="multipart/form-data">
+                <div class="wrap-input10011 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+
+                    <input class="input100" type="text" name="title">
+                    <span class="focus-input100"></span>
+                    <span class="label-input100">Title</span>
+                </div>
+                    <div class="wrap-input10011 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+
+                        <textarea class="input100" type="text" name="description"></textarea>
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Description</span>
+                    </div>
+                    <div class="wrap-input10011 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+
+                        <input class="input100" type="text" name="price">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Price</span>
+                    </div>
+                    <div class="wrap-input10011 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Category</span>
+                        <select name="category">
+                            <option th:each="category:${categories}"
+                                    th:text="${category.name}"
+                                    th:value="${category.id}"> </option>
+                        </select>
+
+
+                    </div>
+                    <div class="wrap-input10011 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+
+                        <input class="input100" type="file" name="picture">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Picture</span>
+                    </div>
+                <div class="container-login100-form-btn1">
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn1">
+                            Add Starter
+                        </button>
+                    </div>
+
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--===============================================================================================-->
+<script src="/user/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--=========/user/======================================================================================-->
+<script src="/user/vendor/animsition/js/animsition.min.js"></script>
+<!--=========/user/======================================================================================-->
+<script src="/user/vendor/bootstrap/js/popper.js"></script>
+<script src="/user/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--=========/user/======================================================================================-->
+<script src="/user/vendor/select2/select2.min.js"></script>
+<!--=========/user/======================================================================================-->
+<script src="/user/vendor/daterangepicker/moment.min.js"></script>
+<script src="/user/vendor/daterangepicker/daterangepicker.js"></script>
+<!--=========/user/======================================================================================-->
+<script src="/user/vendor/countdowntime/countdowntime.js"></script>
+<!--=========/user/======================================================================================-->
+<script src="/user/js/main.js"></script>
+
+</body>
+</html>
