@@ -86,7 +86,6 @@ public class MainController {
     }
 
 
-
     @GetMapping("/services")
     public String getServices(ModelMap modelMap, @AuthenticationPrincipal SpringUser springUser) {
         if (springUser != null) {
@@ -129,5 +128,14 @@ public class MainController {
         return "contact";
     }
 
+    @GetMapping("/product-single")
+    public String getProductSingle(ModelMap modelMap, @AuthenticationPrincipal SpringUser springUser) {
+        if (springUser != null) {
+            modelMap.addAttribute("user", springUser.getUser());
+
+        }
+        modelMap.addAttribute("coffees", coffeeCappuccinoRepository.findAll());
+        return "product-single";
+    }
 
 }

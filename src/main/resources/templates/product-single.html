@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
@@ -40,25 +40,32 @@
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/menu" class="nav-link">Menu</a></li>
+                <li class="nav-item"><a href="/services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Shop</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="shop.html">Shop</a>
-                        <a class="dropdown-item" href="product-single.html">Single Product</a>
-                        <a class="dropdown-item" href="cart.html">Cart</a>
-                        <a class="dropdown-item" href="checkout.html">Checkout</a>
+                        <a class="dropdown-item" href="/shop">Shop</a>
+                        <a class="dropdown-item" href="/product-single">Single Product</a>
+                        <a class="dropdown-item" href="/cart">Cart</a>
+                        <a class="dropdown-item" href="/checkout">Checkout</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                <li class="nav-item cart"><a href="cart.html" class="nav-link"><span
+                <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+                <li class="nav-item cart"><a href="/cart" class="nav-link"><span
                         class="icon icon-shopping_cart"></span><span
                         class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
+                <li class="nav-item">
+                    <a href="/login" th:if="${user==null}" class="nav-link">Login</a>
+                    <a href="/admin" th:if="${user!=null && user.userType.name() == 'ADMIN'}" class="nav-link">Login </a>
+                    <a href="/user" th:if="${user!=null && user.userType.name()=='USER'}" class="nav-link">Login</a>
+
+
+                </li>
             </ul>
         </div>
     </div>
@@ -84,24 +91,18 @@
 </section>
 
 <section class="ftco-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 mb-5 ftco-animate">
-                <a href="images/menu-2.jpg" class="image-popup"><img src="images/menu-2.jpg" class="img-fluid"
-                                                                     alt="Colorlib Template"></a>
+    <div class="container"  >
+        <div class="row" th:each="coffe:${coffees}">
+            <div class="col-lg-6 mb-5 ftco-animate"  >
+                    <a href="/getImage" class="image-popup">
+                    <img  class="img-fluid" th:src="@{/getImage(picUrl=${coffe.picUrl})}"
+                         alt="Colorlib Template"></a>
             </div>
             <div class="col-lg-6 product-details pl-md-5 ftco-animate">
-                <h3>Creamy Latte Coffee</h3>
-                <p class="price"><span>$4.90</span></p>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
-                    paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would
-                    have been rewritten a thousand times and everything that was left from its origin would be the word
-                    "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing
-                    the copy said could convince her and so it didn’t take long until a few insidious Copy Writers
-                    ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they
-                    abused her for their.
-                </p>
+                <h3 th:text="${coffe.title}"></h3>
+                <p class="price"><span th:text="'$'+${coffe.price}"></span></p>
+                <p th:text="${coffe.description}"></p>
+
                 <div class="row mt-4">
                     <div class="col-md-6">
                         <div class="form-group d-flex">
@@ -148,51 +149,20 @@
                     the blind texts.</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3">
+        <div class="row"   >
+            <div class="col-md-3" th:each="coffee:${coffees}">
                 <div class="menu-entry">
-                    <a href="#" class="img" style="background-image: url(images/menu-1.jpg);"></a>
+                    <a href="#" class="img" th:with="img=@{/getImage(picUrl=${coffee.picUrl})}"
+                       th:style="'background-image: url('+${img}+');'"></a>
                     <div class="text text-center pt-4">
-                        <h3><a href="#">Coffee Capuccino</a></h3>
-                        <p>A small river named Duden flows by their place and supplies</p>
-                        <p class="price"><span>$5.90</span></p>
+                        <h3 th:text="${coffee.title}"><a href="#"></a></h3>
+                        <p th:text="${coffee.description}"></p>
+                        <p class="price"><span th:text="'$'+${coffee.price}"></span></p>
                         <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="menu-entry">
-                    <a href="#" class="img" style="background-image: url(images/menu-2.jpg);"></a>
-                    <div class="text text-center pt-4">
-                        <h3><a href="#">Coffee Capuccino</a></h3>
-                        <p>A small river named Duden flows by their place and supplies</p>
-                        <p class="price"><span>$5.90</span></p>
-                        <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="menu-entry">
-                    <a href="#" class="img" style="background-image: url(images/menu-3.jpg);"></a>
-                    <div class="text text-center pt-4">
-                        <h3><a href="#">Coffee Capuccino</a></h3>
-                        <p>A small river named Duden flows by their place and supplies</p>
-                        <p class="price"><span>$5.90</span></p>
-                        <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="menu-entry">
-                    <a href="#" class="img" style="background-image: url(images/menu-4.jpg);"></a>
-                    <div class="text text-center pt-4">
-                        <h3><a href="#">Coffee Capuccino</a></h3>
-                        <p>A small river named Duden flows by their place and supplies</p>
-                        <p class="price"><span>$5.90</span></p>
-                        <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </section>

@@ -51,8 +51,8 @@
                     <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Shop</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="shop.html">Shop</a>
-                        <a class="dropdown-item" href="product-single.html">Single Product</a>
+                        <a class="dropdown-item" href="/shop">Shop</a>
+                        <a class="dropdown-item" href="/product-single">Single Product</a>
                         <a class="dropdown-item" href="room.html">Cart</a>
                         <a class="dropdown-item" href="checkout.html">Checkout</a>
                     </div>
@@ -280,14 +280,14 @@
                     <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
                         Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the
                         coast of the Semantics, a large language ocean.</p>
-                    <p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
+                    <p><a href="/menu" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-6" th:each="coffee:${coffees}">
                         <div class="menu-entry">
-                            <a href="#" class="img" th:with="img=@{/getImage(picUrl=${coffee.picUrl})}"
+                            <a href="/product-single" class="img" th:with="img=@{/getImage(picUrl=${coffee.picUrl})}"
                                th:style="'background-image: url('+${img}+');'"></a>
                         </div>
                     </div>
